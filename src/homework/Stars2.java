@@ -11,5 +11,7 @@ public class Stars2 {
                 System.out.print("*");
             }
         }
+            
+        }
     }
-}
+
