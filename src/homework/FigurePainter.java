@@ -43,14 +43,12 @@ public class FigurePainter {
 
         //Fourth
         int i1;
-        for (i1 = 0; i1 < 5; i1++) {
-
-            for (int j = 0; j < i; j++) {
+        for (i1 = 0; i1 <=3; i1++) {
+            for (int j = 0; j < i1; j++) {
                 System.out.print("  ");
             }
-
-            for (int j = 4; j > i1; j--) {
-                System.out.print("* ");
+            for (int j = 4; j >i1; j--) {
+                System.out.print(" *");
             }System.out.println();
         }
 
