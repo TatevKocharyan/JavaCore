@@ -1,4 +1,4 @@
-package lesson1;
+package chapter1;
 
 public class BlockTest {
     public static void main(String[] args) {

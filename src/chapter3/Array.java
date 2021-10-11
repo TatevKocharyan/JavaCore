@@ -2,7 +2,7 @@ package chapter3;
 
 public class Array {
     public static void main(String[] args) {
-     /*   int [] daysofmonths; daysofmonths= new int[12];
+     int [] daysofmonths; daysofmonths= new int[12];
         daysofmonths[0]=31;
         daysofmonths[1]=28;
         daysofmonths[2]=31;
@@ -15,9 +15,17 @@ public class Array {
         daysofmonths[9]=30;
         daysofmonths[10]=31;
         daysofmonths[11]=30;
-        System.out.println("April has"+daysofmonths[4]+ "days"); */
-        int month_days[]={31,28,31,30,31,30,31,30,31,30,31,30};
-        System.out.println("January has "+month_days[1]+" days");
+        String a= "april";
 
+        System.out.println(a+ " has "+daysofmonths[4]+ " days ");
+        /* int month_days[]={31,28,31,30,31,30,31,30,31,30,31,30};
+        System.out.println("January has "+month_days[1]+" days");*/
+
+        for (int i = 0; i <daysofmonths.length ; i++) {
+            System.out.println((daysofmonths[i]) );
+
+            }
+
+        }
     }
-}
+
