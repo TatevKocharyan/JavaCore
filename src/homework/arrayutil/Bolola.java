@@ -24,14 +24,27 @@ public class Bolola {
         boolean isFound = true;
         for (int i = 0; i < bolola.length; i++) {
             if (bolola[bolola.length - 1] == 'y') {
-                isFound=false;
+                isFound = false;
 
-            }else if (bolola[bolola.length - 2] == 'l') {
-                isFound=true;
+            } else if (bolola[bolola.length - 2] == 'l') {
+                isFound = true;
             }
 
-        }System.out.println(isFound);
+        }
+        System.out.println(isFound);
 
+        //Task 4
+
+        for (int i = 0; i < bolola.length; i++) {
+            if (bolola[0] == 'b' && bolola[1] == ' ' && bolola[2] == 'b') {
+                bolola[i] = bolola[0];
+                bolola[i] = bolola[1];
+                bolola[i] = bolola[2];
+
+            }System.out.println(bolola[i]);
+
+
+        }
 
 
     }
