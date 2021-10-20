@@ -36,20 +36,23 @@ public class Bolola {
         //Task 4
 
         for (int i = 0; i < bolola.length; i++) {
-            if (bolola[0] == 'b' && bolola[1] == ' ' && bolola[2] == 'b') {
-                bolola[i] = bolola[0];
-                bolola[i] = bolola[1];
-                bolola[i] = bolola[2];
+            if (bolola[0] == 'b') {
+                if (bolola[1] == ' ') {
+                    if (bolola[2] == 'b') {
+                        bolola[i] = bolola[0];
+                        bolola[i] = bolola[1];
+                        bolola[i] = bolola[2];
 
-            }System.out.println(bolola[i]);
+                    }
 
 
-        }
+
+                } System.out.println(bolola[i]);
 
 
-    }
+            }
 
-}
+        }}}
 
 
 
