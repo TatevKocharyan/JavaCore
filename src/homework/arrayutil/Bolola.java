@@ -2,7 +2,7 @@ package homework.arrayutil;
 
 public class Bolola {
     public static void main(String[] args) {
-        char[] bolola = {'b', 'o', 'b', 'o', 'l', 'a'};
+        char[] bolola = {'a', 'o', 'k', 'o', 'b', 'a'};
         //Task 1
         int count = 0;
         for (int i = 0; i < bolola.length; i++) {
@@ -36,27 +36,25 @@ public class Bolola {
         //Task 4
         boolean a = false;
         for (int i = 0; i < bolola.length; i++) {
-            if (bolola[0] == 'b') {
-                if (bolola[1] == ' ') {
-                    if (bolola[2] == 'b') {
-                        a = true;
+
+            if (bolola[i] == 'b') {
+               bolola[0]='b';
+                if (bolola[i] == bolola[i]) {
+                    bolola[1]=' ';
+                    if (bolola[i] == 'b') {
+                        bolola[2]='b';
+
                     }
-                bolola[i] = bolola[0];
-                bolola[i] = bolola[1];
-                bolola[i] = bolola[2];}
 
 
 
-
-
-
+                }a=true;
 
 
             }
 
 
-        }System.out.println(a);
-
+            } System.out.println(a);
 
 
     }
