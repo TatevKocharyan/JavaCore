@@ -2,7 +2,7 @@ package chapter5;
 
 import java.util.Scanner;
 
-public class If {
+public class IfSwitchCase {
     public static void main(String[] args) {
 
         int month = 4;
