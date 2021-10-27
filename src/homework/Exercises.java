@@ -19,8 +19,9 @@ public class Exercises {
         System.out.println();
         int[] array = new int[]{1, 2, 3, 4, 5};
         for (int i = 0; i < array.length; i++) {
-        array[i] = array[i] * 2;
-        System.out.println(array[i]);}
+            array[i] = array[i] * 2;
+            System.out.println(array[i]);
+        }
 
 
 // The below line is equal to line1 + line2
@@ -28,7 +29,7 @@ public class Exercises {
 
 // Accessing the elements of the specified array
         for (int i = 0; i < intArray.length; i++)
-        System.out.println("Element at index " + i + ": " + intArray[i]);
+            System.out.println("Element at index " + i + ": " + intArray[i]);
 
         char symbol = 'a';
         String[][] intarray = new String[3][6];
@@ -42,7 +43,57 @@ public class Exercises {
             System.out.println();
         }
 
+        int x = 4;
+        if (x == 3)
+            System.out.println("1");
+        System.out.println("2");
 
-        
-    }
-}
+
+
+
+
+                int i = 1, j = 10;
+                do {
+                    if (i > j) {
+                        break;
+                    }
+                    j--;
+                } while (++i < 5);
+                System.out.println("i = " + i + " и j = " + j);
+
+
+
+
+        boolean flag = true;
+        int value;
+        if (flag) {
+            value = flag ? 1 : 2;
+        } else {
+            value = flag ? 3 : 4;
+        }
+        System.out.println(value);
+
+
+        for (int i1 = 4; i1 <= 5; i1++) {
+            for (int j1 = 0; j1 < 6; j1 = j1 + 2) {
+                System.out.println(i1 + ", " + j1);
+            }
+        }
+
+
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+

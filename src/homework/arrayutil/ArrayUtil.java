@@ -54,20 +54,20 @@ public class ArrayUtil {
 
 
 
-        //Task 5 Տպեք զույգերի քանակը։
+        //Task 6 Տպեք զույգերի քանակը։
         int countofEvens = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0) {
                 countofEvens++;
             }
         }
-        System.out.print("Մասիվի զույգ էլեմենտների քանակն է`" + countofEvens);
+        System.out.println("Մասիվի զույգ էլեմենտների քանակն է`" + countofEvens);
 
 
-        //Task 6 Տպեք կենտերի քանակը։
+        //Task 7 Տպեք կենտերի քանակը։
         int countOfodds = 0;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] % 2 != 1) {
+            if (array[i] % 2 != 0) {
                 countOfodds++;
             }
         }
@@ -75,7 +75,7 @@ public class ArrayUtil {
 
 
 
-        //Task 7 Տպեք մասիվի էլեմենտների գումարը։
+        //Task 8 Տպեք մասիվի էլեմենտների գումարը։
         int sum = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > sum) ;
@@ -85,7 +85,7 @@ public class ArrayUtil {
 
 
 
-        //Task 8 Տպեք մասիվի բոլոր թվերի միջին թվաբանականը
+        //Task 9 Տպեք մասիվի բոլոր թվերի միջին թվաբանականը
         int sum1 = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > sum1) ;
