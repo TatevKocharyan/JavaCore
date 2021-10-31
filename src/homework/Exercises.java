@@ -43,27 +43,27 @@ public class Exercises {
             System.out.println();
         }
 
+
+        // ex. 1
+
         int x = 4;
         if (x == 3)
             System.out.println("1");
         System.out.println("2");
 
 
+        //ex.2
+        int i = 1, j = 10;
+        do {
+            if (i > j) {
+                break;
+            }
+            j--;
+        } while (++i < 5);
+        System.out.println("i = " + i + " и j = " + j);
 
 
-
-                int i = 1, j = 10;
-                do {
-                    if (i > j) {
-                        break;
-                    }
-                    j--;
-                } while (++i < 5);
-                System.out.println("i = " + i + " и j = " + j);
-
-
-
-
+        //ex. 3
         boolean flag = true;
         int value;
         if (flag) {
@@ -74,6 +74,7 @@ public class Exercises {
         System.out.println(value);
 
 
+        //ex. 4
         for (int i1 = 4; i1 <= 5; i1++) {
             for (int j1 = 0; j1 < 6; j1 = j1 + 2) {
                 System.out.println(i1 + ", " + j1);
@@ -81,9 +82,27 @@ public class Exercises {
         }
 
 
+        //  ex. 5
+        boolean isPrime;
+        int num = 14;
+        if (num < 2) isPrime = false;
+        else {
+            isPrime = true;
+        }
+        for (int k = 2; k <= num / k; k++) {
+            if ((num % k == 0)) {
+                isPrime = false;
+                break;
 
             }
         }
+
+        if (isPrime) System.out.println("Prime");
+        else System.out.println("Not Prime");
+
+
+    }
+}
 
 
 

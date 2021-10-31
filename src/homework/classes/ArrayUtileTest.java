@@ -6,9 +6,7 @@ public class ArrayUtileTest {
         int[] numbers = {12, 45, 7, 8, 3, 5, 1, 2, 4, 465};
 
         Object.AllElements(numbers, 10);
-
         Object.max(numbers);
-
         Object.min(numbers);
         Object.odds(numbers);
         Object.even(numbers);
