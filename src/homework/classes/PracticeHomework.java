@@ -9,7 +9,7 @@ public class PracticeHomework {
 
     //Method 2
     int calcAge(int years) {
-        return years * 356;
+        return years * 365;
     }
 
     //Method 3

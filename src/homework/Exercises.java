@@ -85,7 +85,8 @@ public class Exercises {
         //  ex. 5
         boolean isPrime;
         int num = 14;
-        if (num < 2) isPrime = false;
+        if (num < 2){
+            isPrime = false;}
         else {
             isPrime = true;
         }
