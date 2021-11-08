@@ -1,8 +1,8 @@
-package homework.classes;
+package homework.classes.ArrayUtil;
 
-public class ArrayUtileTest {
+public class ArrayUtilTest {
     public static void main(String[] args) {
-        ArrayUtile Object = new ArrayUtile();
+        ArrayUtil Object = new ArrayUtil();
         int[] numbers = {12, 45, 7, 8, 3, 5, 1, 2, 4, 465};
 
         Object.AllElements(numbers, 10);

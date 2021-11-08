@@ -1,4 +1,4 @@
-package homework.classes;
+package homework.classes.bolola;
 
 public class Bolola {
     //Global variable

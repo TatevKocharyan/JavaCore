@@ -1,4 +1,4 @@
-package homework.classes;
+package homework.classes.bolola;
 
 public class BololaTest {
     public static void main(String[] args) {

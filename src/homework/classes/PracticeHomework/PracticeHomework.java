@@ -1,4 +1,4 @@
-package homework.classes;
+package homework.classes.PracticeHomework;
 
 public class PracticeHomework {
 

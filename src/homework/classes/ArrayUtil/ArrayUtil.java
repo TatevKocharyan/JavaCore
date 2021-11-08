@@ -1,6 +1,6 @@
-package homework.classes;
+package homework.classes.ArrayUtil;
 
-public class ArrayUtile {
+public class ArrayUtil {
 
     void AllElements(int[] array, int n) {
         System.out.print("1 Մասիվի բոլոր էլեմենտներն են`");
