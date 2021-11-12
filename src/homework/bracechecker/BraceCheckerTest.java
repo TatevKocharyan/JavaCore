@@ -7,8 +7,8 @@ public class BraceCheckerTest {
         BraceChecker braceChecker = new BraceChecker(text);
 
         braceChecker.check();
-        System.out.println();
-        System.out.println("Error: opened [ but closed } at 20");
+       // System.out.println();
+        //System.out.println("Error: opened [ but closed } at 20");
     }
 
 }

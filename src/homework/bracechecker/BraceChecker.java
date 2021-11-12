@@ -15,31 +15,66 @@ public class BraceChecker {
     //սա հիմնական մեթոդն է, որի մեջ գրելու ենք ամբողջ լոգիկան․ աշխատելու ենք թե stack-ի հետ, թե վերևի text-ի
     public void check() {
         char c = text.charAt(0);
-        for (int i = 0; i < text.length(); i++){
-            System.out.print(text.charAt(i));
-        c='(';
-        switch (c) {
-            case ')':
-                System.out.println("true");
-                break;
-            case '{':
-                System.out.println(false);
-                break;
-            case '[':
-                System.out.println(false);
-                break;
+        Stack stackforChecker = new Stack();
+        for (int i = 0; i < text.length(); i++) {
+            c = text.charAt(i);
+            switch (c) {
+                case '(':
+                    stackforChecker.push(c);
+                    break;
+                case ')':
+                    stackforChecker.push(c);
+                    break;
+                case '{':
+                    stackforChecker.push(c);
+                    break;
                 case '}':
-                System.out.println(false);
-                break;
-            case ']':
-                System.out.println(false);
-                break;
+                    stackforChecker.pop();
+                    System.out.println("Error: opened [ but closed } at 20");
+                    break;
+                case '[':
+                    stackforChecker.push(c);
+                    break;
+                case ']':
+                    stackforChecker.push(c);
+                    break;
+                default:
+
+
+               // case '[':
+                   // stackforChecker.push(c);
+                  //  break;
+
+
+                    //if (c!=')'){
+                    //  stackforChecker.pop();}
+
+
+                    //       stackforChecker.pop();
+                    //  System.out.println("true");
+                    // break;
+                    // case '{':
+                    //    System.out.println(false);
+                    //     break;
+                    //  case '[':
+                    //      System.out.println(false);
+                    //      break;
+                    //   case '}':
+                    //     System.out.println(false);
+                    //      break;
+                    //   case ']':
+                    //     System.out.println(false);
+                    //    break;
+
+            }
         }
-    }}}
-    //  text.charAt(i)=='{'||
-    // text.charAt(i)=='[')
-    // System.out.print(text.charAt(i)+" ");
-    //StackforChecker.push(text.charAt(i));
+    }
+}
+
+//  text.charAt(i)=='{'||
+// text.charAt(i)=='[')
+// System.out.print(text.charAt(i)+" ");
+//StackforChecker.push(text.charAt(i));
 
 
 
