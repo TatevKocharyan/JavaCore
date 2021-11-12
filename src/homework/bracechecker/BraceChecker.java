@@ -20,30 +20,31 @@ public class BraceChecker {
             c = text.charAt(i);
             switch (c) {
                 case '(':
-                    stackforChecker.push(c);
-                    break;
-                case ')':
-                    stackforChecker.push(c);
-                    break;
                 case '{':
-                    stackforChecker.push(c);
-                    break;
-                case '}':
-                    stackforChecker.pop();
-                    System.out.println("Error: opened [ but closed } at 20");
-                    break;
                 case '[':
                     stackforChecker.push(c);
                     break;
+                case ')':
+                    stackforChecker.pop();
+                    if (stackforChecker.pop()!='(')
+                    break;
+                case '}':
+                    stackforChecker.pop();
+                    if (stackforChecker.pop()!='{')
+                        System.out.println("Error");
+                    break;
                 case ']':
-                    stackforChecker.push(c);
+                    stackforChecker.pop();
+                    if (stackforChecker.pop()!='[')
+                        System.out.println("Error");
                     break;
                 default:
 
 
-               // case '[':
-                   // stackforChecker.push(c);
-                  //  break;
+
+                    // case '[':
+                    // stackforChecker.push(c);
+                    //  break;
 
 
                     //if (c!=')'){
