@@ -26,20 +26,26 @@ public class BraceChecker {
                     break;
                 case ')':
                     stackforChecker.pop();
-                    if (stackforChecker.pop()!='(')
+                    if (stackforChecker.pop() != '(') {
+                        System.out.println("Right");
+                    } else
+                        System.out.println("Error");
                     break;
                 case '}':
                     stackforChecker.pop();
-                    if (stackforChecker.pop()!='{')
+                    if (stackforChecker.pop() != '{') {
+                        System.out.println("Right");
+                    } else
                         System.out.println("Error");
-                    break;
+                        break;
                 case ']':
                     stackforChecker.pop();
-                    if (stackforChecker.pop()!='[')
-                        System.out.println("Error");
+                    if (stackforChecker.pop() != '[') {
+                        System.out.println("Right");
+                    } else System.out.println("Error");
+
                     break;
                 default:
-
 
 
                     // case '[':
