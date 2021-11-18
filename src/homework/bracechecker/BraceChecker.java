@@ -14,10 +14,12 @@ public class BraceChecker {
 
     //սա հիմնական մեթոդն է, որի մեջ գրելու ենք ամբողջ լոգիկան․ աշխատելու ենք թե stack-ի հետ, թե վերևի text-ի
     public void check() {
-        char c = text.charAt(0);
+
         Stack stackforChecker = new Stack();
+
+        boolean isVaid = true;
         for (int i = 0; i < text.length(); i++) {
-            c = text.charAt(i);
+            char c = text.charAt(i);
             switch (c) {
                 case '(':
                 case '{':
@@ -25,63 +27,37 @@ public class BraceChecker {
                     stackforChecker.push(c);
                     break;
                 case ')':
-                    stackforChecker.pop();
-                    if (stackforChecker.pop() != '(') {
-                        System.out.println("Right");
-                    } else
-                        System.out.println("Error");
+                    int pop = stackforChecker.pop();
+                    if (pop != '(') {
+                        isVaid = false;
+                        System.out.println("Error: closed" + c + "but opened" + (char) pop + "at" + i);
+                    }
                     break;
                 case '}':
-                    stackforChecker.pop();
-                    if (stackforChecker.pop() != '{') {
-                        System.out.println("Right");
-                    } else
-                        System.out.println("Error");
-                        break;
-                case ']':
-                    stackforChecker.pop();
-                    if (stackforChecker.pop() != '[') {
-                        System.out.println("Right");
-                    } else System.out.println("Error");
-
+                    pop = stackforChecker.pop();
+                    if (pop != '{') {
+                        isVaid = false;
+                        System.out.println("Error: closed" + c + "but opened" + (char) pop + "at" + i);
+                    }
                     break;
-                default:
-
-
-                    // case '[':
-                    // stackforChecker.push(c);
-                    //  break;
-
-
-                    //if (c!=')'){
-                    //  stackforChecker.pop();}
-
-
-                    //       stackforChecker.pop();
-                    //  System.out.println("true");
-                    // break;
-                    // case '{':
-                    //    System.out.println(false);
-                    //     break;
-                    //  case '[':
-                    //      System.out.println(false);
-                    //      break;
-                    //   case '}':
-                    //     System.out.println(false);
-                    //      break;
-                    //   case ']':
-                    //     System.out.println(false);
-                    //    break;
-
+                case ']':
+                    pop = stackforChecker.pop();
+                    if (pop != '[') {
+                        isVaid = false;
+                        System.out.println("Error: closed" + c + "but opened" + (char) pop + "at" + i);
+                    }
+                    break;
             }
-        }
+        }if (isVaid) ;
+        {System.out.println("Everything is Right");}
+
     }
 }
 
-//  text.charAt(i)=='{'||
-// text.charAt(i)=='[')
-// System.out.print(text.charAt(i)+" ");
-//StackforChecker.push(text.charAt(i));
+
+
+
+
 
 
 

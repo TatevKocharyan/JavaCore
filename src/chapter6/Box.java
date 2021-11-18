@@ -7,13 +7,12 @@ public class Box {
     double depth;
 
 
-    Box() {
+    Box(double width,double height,double depth ) {
 
         System.out.println("Constructing Box");
-
-        width = 10;
-        height = 10;
-        depth = 10;
+        this.width=width;
+        this.height=height;
+        this.depth=depth;
     }
 
     double volume() {
