@@ -1,7 +1,7 @@
 package homework.author;
 
 public class AuthorStorage {
-    private Author[] array;
+    private Author[] array=new Author[10];
     private int size = 0;
 
     //M
