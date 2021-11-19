@@ -16,15 +16,18 @@ public class AuthorTest {
             System.out.println("Please input author's name");
             String b = scanner.next();
             System.out.println("Please input author's surname");
-            b=scanner.next();
+            String b1=scanner.next();
             System.out.println("Please input author's email");
-            b=scanner.next();
+            String b2=scanner.next();
             System.out.println("Please input author's age");
-            b=scanner.next();
+            int b3=scanner.nextInt();
             System.out.println("Please input author's gender");
-            b=scanner.next();
-            Author object=new Author();
+            String b4=scanner.next();
+            Author object=new Author(b,b1,b2,b3,b4);
+            person.add(object);
         }
+
+        person.print();
 
 
 
