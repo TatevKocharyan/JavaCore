@@ -13,11 +13,21 @@ public class AuthorTest {
         int a = scanner.nextInt();
         AuthorStorage person = new AuthorStorage();
         for (int i = 0; i < a; i++) {
-            System.out.println("Please input information about the author");
+            System.out.println("Please input author's name");
             String b = scanner.next();
+            System.out.println("Please input author's surname");
+            b=scanner.next();
+            System.out.println("Please input author's email");
+            b=scanner.next();
+            System.out.println("Please input author's age");
+            b=scanner.next();
+            System.out.println("Please input author's gender");
+            b=scanner.next();
+            Author object=new Author();
         }
 
 
 
     }
 }
+// Տաթևիկ Քոչարյան tatevik0302@mail.ru 27 իգական
