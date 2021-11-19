@@ -14,6 +14,15 @@ public class DinamicArray {
     }
 
     //M
+    public void add(int[] numbers) {
+
+        for (int number : numbers) {
+            add(number);
+        }
+    }
+
+
+    //M
     public void add(int value, int index) {
         if (index < 0 || index > size) {
             System.err.println("OutOfBounderies");
@@ -21,8 +30,8 @@ public class DinamicArray {
             if (size == array.length) {
                 extend();
             }
-            for (int i = size-1; i >=index; i--) {
-                array[i+1] = array[i];
+            for (int i = size - 1; i >= index; i--) {
+                array[i + 1] = array[i];
 
             }
         }
@@ -78,9 +87,25 @@ public class DinamicArray {
     //M
     public void print() {
         for (int i = 0; i < size; i++) {
-            System.out.print(array[i]+" ");
+            System.out.print(array[i] + " ");
         }
     }
 
+    //M
+    public boolean isExist(int value) {
+        for (int i = 0; i < size; i++) {
+            if ( array[i]==value ) {
+                return true;
+            } else {
+            }
+        }
+        return false;
+    }
+
+    //M
+    boolean isEmpty() {
+        return size == 0;
+
+    }
 }
 
