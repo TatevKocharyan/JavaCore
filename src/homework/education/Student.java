@@ -6,17 +6,17 @@ public class Student {
     private int age;
     private String email;
     private String phone;
-    private String lesson;
+    private Lesson lesson;
 
 
 
-    public Student(String name, String surname, int age, String email, String phone, String lesson) {
+    public Student(String name, String surname, int age, String email, String phone, Lesson lesson) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.email = email;
         this.phone = phone;
-        this.lesson = lesson;
+        this.lesson= lesson;
 
     }
 
@@ -63,11 +63,11 @@ public class Student {
         this.phone = phone;
     }
 
-    public String getLesson() {
+    public Lesson getLesson() {
         return lesson;
     }
 
-    public void setLesson(String lesson) {
+    public void setLesson(Lesson lesson) {
         this.lesson = lesson;
     }
 

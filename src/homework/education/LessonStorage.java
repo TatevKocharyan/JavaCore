@@ -28,12 +28,25 @@ public class LessonStorage {
     public Lesson deleteLessonByName(String name) {
         for (int i = 0; i < size; i++) {
             if (lessons[i].getName().equals(name)) {
-                ArrayUtilForEducation.deleteByIndex(lessons,i,size);
+                ArrayUtilForEducation.deleteByIndex(lessons, i, size);
                 size--;
-               break;
+                break;
+            }
+
+        }
+        return null;
+
+    }
+
+
+    public Lesson getByLessonName(String lessonname) {
+        for (int i = 0; i < size; i++) {
+            if (lessons[i].getName().equals(lessonname)) {
+                return lessons[i];
             }
 
         }return null;
-
     }
+
 }
+

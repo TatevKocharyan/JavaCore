@@ -99,6 +99,13 @@ public class StudentTest {
     }
 
     private static void addStudent() {
+        System.out.println("Please input lesson");
+        System.out.println("_______");
+        lessonStorage.print();
+        System.out.println("_______");
+        String lessonname=scanner.nextLine();
+        Lesson lesson=lessonStorage.getByLessonName(lessonname);
+
         System.out.println("Please input Student's name");
         String name = scanner.nextLine();
         System.out.println("Please input Student's surname");
@@ -110,7 +117,6 @@ public class StudentTest {
         System.out.println("Please input Student's phone");
         String phone = scanner.nextLine();
         System.out.println("Please input Student's lesson");
-        String lesson = scanner.nextLine();
         Student studentInformation = new Student(name, surname, age, email, phone, lesson);
         studentStorage.add(studentInformation);
         System.out.println("Thank you student was added");
