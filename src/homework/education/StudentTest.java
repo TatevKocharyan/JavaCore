@@ -32,6 +32,11 @@ public class StudentTest {
 
 
     public static void main(String[] args) {
+        lessonStorage.add(new Lesson("hay", "2", "ddssd", 5));
+        lessonStorage.add(new Lesson("rus", "2", "ddssd", 5));
+        lessonStorage.add(new Lesson("angl", "2", "ddssd", 5));
+        //studentStorage.add(new Student());
+
 
         boolean isRun = true;
         while (isRun) {
@@ -59,6 +64,9 @@ public class StudentTest {
                 case DELETE_LESSON_BY_NAME:
                     deleteLessonByName();
                     break;
+                case DELETE_STUDENT_BY_EMAIL:
+                    deleteStudentByEmail();
+                    break;
             }
 
         }
@@ -66,15 +74,23 @@ public class StudentTest {
 
     }
 
+    private static void deleteStudentByEmail() {
+        System.out.println("Please input student's email for deleting");
+        String email = scanner.nextLine();
+        Student student = studentStorage.deleteByEmail(email);
+
+    }
+
     private static void deleteLessonByName() {
         System.out.println("Please input name of the lesson for deleting ");
-        String name=scanner.nextLine();
-        Lesson lesson=lessonStorage.deleteLessonByName(name);
+        String name = scanner.nextLine();
+        Lesson lesson = lessonStorage.deleteLessonByName(name);
+
     }
 
     private static void printStudentsByLessons() {
         System.out.println("please input lesson name for printing Student");
-        String lessonname=scanner.nextLine();
+        String lessonname = scanner.nextLine();
         studentStorage.printBylessonName(lessonname);
 
     }

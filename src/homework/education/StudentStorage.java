@@ -39,4 +39,14 @@ public class StudentStorage {
 
         }return null;
     }
+
+    public Student deleteByEmail(String email) {
+        for (int i = 0; i < size; i++) {
+            if(students[i].getEmail().equals(email)){
+                ArrayUtilForEducation.deleteByIndex(students,i,size);
+                size--;
+                break;
+            }
+        }return null ;
+    }
 }
