@@ -67,6 +67,9 @@ public class StudentTest {
                 case DELETE_STUDENT_BY_EMAIL:
                     deleteStudentByEmail();
                     break;
+                default:
+                    System.out.println("Invalid command! ");
+                    break;
             }
 
         }
