@@ -32,9 +32,9 @@ public class StudentTest {
 
 
     public static void main(String[] args) {
-        lessonStorage.add(new Lesson("hay", "2", "ddssd", 5));
-        lessonStorage.add(new Lesson("rus", "2", "ddssd", 5));
-        lessonStorage.add(new Lesson("angl", "2", "ddssd", 5));
+        lessonStorage.add(new Lesson("arm", "2 hours", "A.Sahakyan", 50));
+        lessonStorage.add(new Lesson("rus", "2 hours", "A.Sahakyan", 50));
+        lessonStorage.add(new Lesson("eng", "2 hours", "A.Sahakyan", 50));
         //studentStorage.add(new Student());
 
 
