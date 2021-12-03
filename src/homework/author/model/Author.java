@@ -1,4 +1,7 @@
-package homework.author;
+package homework.author.model;
+
+import java.util.Date;
+import java.util.Objects;
 
 public class Author {
     private String name;
@@ -6,14 +9,16 @@ public class Author {
     private String email;
     private int age;
     private String gender;
+    private Date dateOfBirth;
 
 
-    public Author(String name, String surname, String email, int age, String gender) {
+    public Author(String name, String surname, String email, int age, String gender, Date dateOfBirth) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.age = age;
         this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Author(){
@@ -60,6 +65,28 @@ public class Author {
         this.gender = gender;
     }
 
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return age == author.age && Objects.equals(name, author.name) && Objects.equals(surname, author.surname) && Objects.equals(email, author.email) && Objects.equals(gender, author.gender) && Objects.equals(dateOfBirth, author.dateOfBirth);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, email, age, gender, dateOfBirth);
+    }
 
     @Override
     public String toString() {

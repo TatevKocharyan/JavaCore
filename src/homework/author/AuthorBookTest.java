@@ -1,47 +1,21 @@
 package homework.author;
 
 
+import homework.author.model.Author;
+import homework.author.model.Book;
+import homework.author.storage.AuthorStorage;
+import homework.author.storage.BookStorage;
+
 import java.util.Scanner;
 
-public class AuthorBookTest {
+public class AuthorBookTest implements AuthotBookCommands {
     private static Scanner scanner = new Scanner(System.in);
     private static AuthorStorage authorStorage = new AuthorStorage();
     private static BookStorage bookStorage = new BookStorage();
 
-    private static final String EXIT = "0";
-    private static final String ADD_AUTHORS = "1";
-    private static final String SEARCH_AUTHORS = "2";
-    private static final String SEARCH_AUTHORS_BY_AGE = "3";
-    private static final String PRINT_AUTHORS = "4";
-    private static final String ADD_BOOK = "5";
-    private static final String PRINT_BOOKS = "6";
-    private static final String SEARCH_BOOKS_BY_TITLE = "7";
-    private static final String SEARCH_BOOKS_BY_AUTHOR = "8";
-    private static final String COUNT_BOOKS_BY_AUTHOR = "9";
-    private static final String CHANGE_AUTHOR = "10";
-    private static final String CHANGE_BOOK_AUTHOR = "11";
-    private static final String DELETE_AUTHOR = "12";
-    private static final String DELETE_BOOK = "13";
-    private static final String DELETE_BOOK_BY_AUTHOR = "14";
 
-    private static void printCommands() {
-        System.out.println("Please input " + EXIT + " for EXIT");
-        System.out.println("Please input " + ADD_AUTHORS + " for ADD_AUTHORS");
-        System.out.println("Please input " + SEARCH_AUTHORS + " for SEARCH_AUTHORS");
-        System.out.println("Please input " + SEARCH_AUTHORS_BY_AGE + " for SEARCH_AUTHORS_BY_AGE");
-        System.out.println("Please input " + PRINT_AUTHORS + " for PRINT_AUTHORS");
-        System.out.println("Please input " + ADD_BOOK + " for ADD_BOOK");
-        System.out.println("Please input " + PRINT_BOOKS + " for PRINT_BOOK ");
-        System.out.println("Please input " + SEARCH_BOOKS_BY_TITLE + " for SEARCH_BOOKS_BY_TITLE");
 
-        System.out.println("please input " + SEARCH_BOOKS_BY_AUTHOR + " for SEARCH_BOOKS_BY_AUTHOR");
-        System.out.println("please input " + COUNT_BOOKS_BY_AUTHOR + " for COUNT_BOOKS_BY_AUTHOR");
-        System.out.println("please input " + CHANGE_AUTHOR + " for CHANGE_AUTHOR");
-        System.out.println("please input " + CHANGE_BOOK_AUTHOR + " for CHANGE_BOOK_AUTHOR");
-        System.out.println("please input " + DELETE_AUTHOR + " for DELETE_AUTHOR");
-        System.out.println("please input " + DELETE_BOOK + " for DELETE_BOOK");
-        System.out.println("please input " + DELETE_BOOK_BY_AUTHOR + " for DELETE_BOOK_BY_AUTHOR");
-    }
+
 
 
     public static void main(String[] args) {
@@ -51,7 +25,7 @@ public class AuthorBookTest {
         /*bookStorage.add(new Book("Animal Farm", "Political", 10, 4));*/
         Boolean isRun = true;
         while (isRun) {
-            printCommands();
+            AuthotBookCommands.printCommands();
             String command = scanner.nextLine();
             switch (command) {
                 case EXIT:
@@ -300,7 +274,7 @@ public class AuthorBookTest {
     /*Այս մեթոդի միջոցով ավելացնում ենք հեղինակների տվյալները, որոնք գրվում են կոնսոլում Scanner կլասի միջոցով։*/
     private static void addAuthor() {
 
-        System.out.println("please input author's name,surname,email,gender,age");
+        System.out.println("please input author's name,surname,email,gender,age,date of bith - 01/12/2012");
         String authorDataStr = scanner.nextLine();
         String[] authorData = authorDataStr.split(",");
         if (authorData.length == 5) {

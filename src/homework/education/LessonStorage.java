@@ -44,9 +44,13 @@ public class LessonStorage {
             if (lessons[i].getName().equals(lessonname)) {
                 return lessons[i];
             }
-
+            if (lessons[i] != null) {
+                lessons[i].setName(lessonname);
+            }
         }return null;
+
     }
+
 
 }
 

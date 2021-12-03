@@ -35,7 +35,7 @@ public class StudentTest {
         lessonStorage.add(new Lesson("arm", "2 hours", "A.Sahakyan", 50));
         lessonStorage.add(new Lesson("rus", "2 hours", "A.Sahakyan", 50));
         lessonStorage.add(new Lesson("eng", "2 hours", "A.Sahakyan", 50));
-        //studentStorage.add(new Student());
+        // studentStorage.add(new Student("poxos","poxosyan",19,"mail","055555555",
 
 
         boolean isRun = true;
@@ -103,9 +103,10 @@ public class StudentTest {
         System.out.println("_______");
         lessonStorage.print();
         System.out.println("_______");
-        String lessonname=scanner.nextLine();
-        Lesson lesson=lessonStorage.getByLessonName(lessonname);
-
+        String lessonname = scanner.nextLine();
+        Lesson lesson = lessonStorage.getByLessonName(lessonname);
+        if (lesson != null)
+            lesson.setName(lessonname);
         System.out.println("Please input Student's name");
         String name = scanner.nextLine();
         System.out.println("Please input Student's surname");
@@ -116,7 +117,6 @@ public class StudentTest {
         String email = scanner.nextLine();
         System.out.println("Please input Student's phone");
         String phone = scanner.nextLine();
-        System.out.println("Please input Student's lesson");
         Student studentInformation = new Student(name, surname, age, email, phone, lesson);
         studentStorage.add(studentInformation);
         System.out.println("Thank you student was added");
