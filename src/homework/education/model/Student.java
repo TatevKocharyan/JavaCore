@@ -1,4 +1,6 @@
-package homework.education;
+package homework.education.model;
+
+import homework.education.model.Lesson;
 
 public class Student {
     private String name;
@@ -80,7 +82,7 @@ public class Student {
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", lesson='" + lesson + '\'' +
+                ", \nlesson='" + lesson + '\'' +
                 '}';
     }
 }

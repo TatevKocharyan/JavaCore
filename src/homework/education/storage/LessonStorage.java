@@ -1,4 +1,7 @@
-package homework.education;
+package homework.education.storage;
+
+import homework.education.model.Lesson;
+import homework.education.util.ArrayUtilForEducation;
 
 public class LessonStorage {
     private Lesson[] lessons = new Lesson[10];

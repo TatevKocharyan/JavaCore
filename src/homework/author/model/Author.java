@@ -1,5 +1,7 @@
 package homework.author.model;
 
+import homework.author.util.DateUtil;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -96,6 +98,7 @@ public class Author {
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
+                ", dateOfBirth=" + DateUtil.dateToString(dateOfBirth) +
                 '}';
     }
 }

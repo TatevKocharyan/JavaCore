@@ -92,7 +92,7 @@ public class Book {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", count=" + count +
-                ", author=" + author +
+                ", \nauthor=" + author +
                 '}';
     }
 }

@@ -5,10 +5,13 @@ import homework.author.model.Author;
 import homework.author.model.Book;
 import homework.author.storage.AuthorStorage;
 import homework.author.storage.BookStorage;
+import homework.author.util.DateUtil;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.Scanner;
 
-public class AuthorBookTest implements AuthotBookCommands {
+public class AuthorBookTest implements AuthorBookCommands {
     private static Scanner scanner = new Scanner(System.in);
     private static AuthorStorage authorStorage = new AuthorStorage();
     private static BookStorage bookStorage = new BookStorage();
@@ -18,14 +21,14 @@ public class AuthorBookTest implements AuthotBookCommands {
 
 
 
-    public static void main(String[] args) {
-        /*authorStorage.add(new Author("poxos", "poxosyan", "poxos@gmail.com", 27, "male"));
-        authorStorage.add(new Author("petros", "petrosyan", "petros@gmail.com", 18, "male"));
-        authorStorage.add(new Author("gayane", "hakobyan", "gayane@gmail.com", 30, "female"));
-        /*bookStorage.add(new Book("Animal Farm", "Political", 10, 4));*/
+    public static void main(String[] args) throws ParseException {
+      authorStorage.add(new Author("poxos", "poxosyan", "poxos@gmail.com", 27, "male", DateUtil.stringToDate("12/05/1999")));
+      authorStorage.add(new Author("petros", "petrosyan", "petros@gmail.com", 18, "male",DateUtil.stringToDate("04/05/2000")));
+     authorStorage.add(new Author("gayane", "hakobyan", "gayane@gmail.com", 30, "female",DateUtil.stringToDate("11/10/1985")));
+     bookStorage.add(new Book("ARM454545","Animal Farm", "Political", 10, 4, authorStorage.getByEmail("gayane@gmail.com")));
         Boolean isRun = true;
         while (isRun) {
-            AuthotBookCommands.printCommands();
+            AuthorBookCommands.printCommands();
             String command = scanner.nextLine();
             switch (command) {
                 case EXIT:
@@ -272,24 +275,24 @@ public class AuthorBookTest implements AuthotBookCommands {
 
 
     /*Այս մեթոդի միջոցով ավելացնում ենք հեղինակների տվյալները, որոնք գրվում են կոնսոլում Scanner կլասի միջոցով։*/
-    private static void addAuthor() {
-
+    private static void addAuthor() throws ParseException {
         System.out.println("please input author's name,surname,email,gender,age,date of bith - 01/12/2012");
         String authorDataStr = scanner.nextLine();
         String[] authorData = authorDataStr.split(",");
-        if (authorData.length == 5) {
+        if (authorData.length == 6) {
             int age = Integer.parseInt(authorData[4]);
-            Author author = new Author(authorData[0], authorData[1], authorData[2],age, authorData[3]);
+            Date date= DateUtil.stringToDate(authorData[5]);
+            Author author = new Author(authorData[0], authorData[1], authorData[2],age, authorData[3],date);
 
             if (authorStorage.getByEmail(author.getEmail()) != null) {
                 System.err.println("Invalid email. Author with this email already exists");
             } else {
-                authorStorage.add(author);
+                //authorStorage.add(author);
                 System.out.println("Thank you, author was added");
             }
         } else {
             System.err.println("invalid data");
         }
-    }
-}
+    }}
+
 

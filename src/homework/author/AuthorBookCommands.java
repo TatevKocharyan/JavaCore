@@ -1,6 +1,6 @@
 package homework.author;
 
-public interface AuthotBookCommands {
+public interface AuthorBookCommands {
      String EXIT = "0";
      String ADD_AUTHORS = "1";
      String SEARCH_AUTHORS = "2";
