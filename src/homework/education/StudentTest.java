@@ -27,7 +27,6 @@ public class StudentTest implements Commands {
         while (isRun) {
             Commands.printCommandsForUser();
             String commandforUser = scanner.nextLine();
-
             switch (commandforUser) {
                 case LOGIN:
                     requireEmailandPassword();
@@ -35,12 +34,22 @@ public class StudentTest implements Commands {
                 case REGISTER:
                     requireUserDatas();
                     break;
+                case EXIT:
+                    isRun = false;
+                    break;
+                default:
+                    System.out.println("Invalid command!! ");
+                    break;
             }
+
+
+            boolean isRun1 = true;
+            while (isRun1) {
             //Commands.printCommands();
             String command = scanner.nextLine();
             switch (command) {
                 case EXIT:
-                    isRun = false;
+                    isRun1 = false;
                     break;
                 case ADD_LESSON:
                     addLesson();
@@ -68,7 +77,7 @@ public class StudentTest implements Commands {
                     break;
             }
 
-        }
+        }}
 
 
     }
@@ -95,20 +104,29 @@ public class StudentTest implements Commands {
         System.out.println("Please input your password");
         String password = scanner.nextLine();
         User userinfo = userStorage.checkUser(email, password);
-        System.out.println("please input user or admin ");
-        String type = scanner.nextLine();
-        switch (type) {
-            case "admin":
-
-                Commands.printCommands();
-                break;
-            case "user":
-                userStorage.checktype(type);
-
-                Commands.printCommandsForuser();
-                break;
-        }}
-
+        if (userinfo != null) {
+            System.out.println("please input user or admin ");
+            String type = scanner.nextLine();
+            //userinfo = userStorage.CheckUserbyType(type);
+            if (type.equals(userinfo.getType())) {
+                switch (type) {
+                    case "admin":
+                        Commands.printCommands();
+                        break;
+                    case "user":
+                        //userStorage.checktype(type);
+                        Commands.printCommandsForuser();
+                        break;
+                }
+            }else {
+                System.out.println("your type is incorrect");
+                requireEmailandPassword();
+            }
+        }else{
+            System.out.println("Your password and login is incorrect");
+            requireEmailandPassword();
+        }
+    }
 
         private static void deleteStudentByEmail () {
             System.out.println("Please input student's email for deleting");

@@ -30,27 +30,28 @@ public class UserStorage {
 
     public User checkUser(String email, String password) {
         for (int i = 0; i < size; i++) {
-            if (users[i].getEmail().equals(email) && users[i].getPassword().equals(password) ) {
-                System.out.println("Choose user or admin");
-
-
-            }else {
-                System.out.println("Invalid mail and password");
+            if (users[i].getEmail().equals(email) && users[i].getPassword().equals(password)) {
+               return users[i];
             }
 
+        }return null;
 
-            }
 
-        return null;
     }
 
 
-    public void checktype(String type) {
-        for (int i = 0; i <size ; i++) {
-            if (users[i].getType().equals(type)){
-                System.out.println("User is found");
-            }else {return;}
 
-        }
+
+    public User CheckUserbyType(String type) {
+            for (int i = 0; i <size ; i++) {
+                if (users[i].getType().equals(type)){
+                    return users[i];
+                }
+                }return null;
+
+
+
+
     }
 }
+
