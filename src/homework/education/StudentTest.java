@@ -95,6 +95,7 @@ public class StudentTest implements Commands {
         String type = scanner.nextLine();
         User user = new User(name, surname, email, password, type);
         userStorage.add(user);
+        Commands.printCommands();
     }
 
 
@@ -175,7 +176,7 @@ public class StudentTest implements Commands {
 
         private static void addLesson () {
             System.out.println("Please input the lesson");
-            String name = scanner.next();
+            String name = scanner.nextLine();
             System.out.println("Please input  duration of the lesson");
             String duration = scanner.nextLine();
             System.out.println("Please input lecturar's name");
