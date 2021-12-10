@@ -4,6 +4,7 @@ public interface Commands {
 
     String LOGIN="1";
     String REGISTER="2";
+   // String PRINT_USERS="3";
 
      String EXIT = "0";
      String ADD_LESSON = "1";
@@ -16,7 +17,7 @@ public interface Commands {
 
 
 
-     static void printCommandsForUser() {
+     static void printFirstCommandsForUser() {
          System.out.println("For logging in please input"+LOGIN);
          System.out.println("For registering please input"+REGISTER);
          System.out.println("For exit pleas input"+EXIT);
@@ -42,7 +43,7 @@ public interface Commands {
         System.out.println("Please input " + PRINT_STUDENTS + " for PRINT_STUDENTS");
         System.out.println("Please input " + PRINT_STUDENTS_BY_LESSON + " for PRINT_STUDENTS_BY_LESSON");
         System.out.println("Please input " + PRINT_LESSONS + " for PRINT_LESSONS");
-
+        //System.out.println("Please input " + PRINT_USERS + " for PRINT_USSERS");
 
 
 

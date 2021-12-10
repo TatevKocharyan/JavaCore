@@ -25,7 +25,7 @@ public class StudentTest implements Commands {
 
         boolean isRun = true;
         while (isRun) {
-            Commands.printCommandsForUser();
+            Commands.printFirstCommandsForUser();
             String commandforUser = scanner.nextLine();
             switch (commandforUser) {
                 case LOGIN:
@@ -43,41 +43,7 @@ public class StudentTest implements Commands {
             }
 
 
-            boolean isRun1 = true;
-            while (isRun1) {
-            //Commands.printCommands();
-            String command = scanner.nextLine();
-            switch (command) {
-                case EXIT:
-                    isRun1 = false;
-                    break;
-                case ADD_LESSON:
-                    addLesson();
-                    break;
-                case ADD_STUDENT:
-                    addStudent();
-                    break;
-                case PRINT_STUDENTS:
-                    studentStorage.print();
-                    break;
-                case PRINT_STUDENTS_BY_LESSON:
-                    printStudentsByLessons();
-                    break;
-                case PRINT_LESSONS:
-                    lessonStorage.print();
-                    break;
-                case DELETE_LESSON_BY_NAME:
-                    deleteLessonByName();
-                    break;
-                case DELETE_STUDENT_BY_EMAIL:
-                    deleteStudentByEmail();
-                    break;
-                default:
-                    System.out.println("Invalid command!! ");
-                    break;
-            }
-
-        }}
+        }
 
 
     }
@@ -95,7 +61,35 @@ public class StudentTest implements Commands {
         String type = scanner.nextLine();
         User user = new User(name, surname, email, password, type);
         userStorage.add(user);
-        Commands.printCommands();
+        Commands.printCommandsForuser();
+        boolean isRun2 = true;
+        while (isRun2) {
+            String command = scanner.nextLine();
+            switch (command) {
+                case EXIT:
+                    isRun2 = false;
+                    break;
+                case ADD_LESSON:
+                    addLesson();
+                    break;
+                case ADD_STUDENT:
+                    addStudent();
+                    break;
+                case PRINT_STUDENTS:
+                  studentStorage.print();
+                   break;
+                case PRINT_STUDENTS_BY_LESSON:
+                    printStudentsByLessons();
+                    break;
+                case PRINT_LESSONS:
+                    lessonStorage.print();
+                    break;
+                default:
+                    System.out.println("Invalid command!! ");
+                    break;
+            }
+
+        }
     }
 
 
@@ -112,7 +106,42 @@ public class StudentTest implements Commands {
             if (type.equals(userinfo.getType())) {
                 switch (type) {
                     case "admin":
-                        Commands.printCommands();
+                        boolean isRun1 = true;
+                        while (isRun1) {
+                            Commands.printCommands();
+                            String command = scanner.nextLine();
+                            switch (command) {
+                                case EXIT:
+                                    isRun1 = false;
+                                    break;
+                                case ADD_LESSON:
+                                    addLesson();
+                                    break;
+                                case ADD_STUDENT:
+                                    addStudent();
+                                    break;
+                                case PRINT_STUDENTS:
+                                    studentStorage.print();
+                                    break;
+                                case PRINT_STUDENTS_BY_LESSON:
+                                    printStudentsByLessons();
+                                    break;
+                                case PRINT_LESSONS:
+                                    lessonStorage.print();
+                                    break;
+                                case DELETE_LESSON_BY_NAME:
+                                    deleteLessonByName();
+                                    break;
+                                case DELETE_STUDENT_BY_EMAIL:
+                                    deleteStudentByEmail();
+                                    break;
+                                default:
+                                    System.out.println("Invalid command!! ");
+                                    break;
+                            }
+
+                        }
+
                         break;
                     case "user":
                         //userStorage.checktype(type);
@@ -127,6 +156,40 @@ public class StudentTest implements Commands {
             System.out.println("Your password and login is incorrect");
             requireEmailandPassword();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
         private static void deleteStudentByEmail () {
