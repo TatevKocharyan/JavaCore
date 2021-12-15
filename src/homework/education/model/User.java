@@ -16,6 +16,7 @@ public class User {
         this.password = password;
         this.type = type;
     }
+    public User(){}
 
     public String getName() {
         return name;

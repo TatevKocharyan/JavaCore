@@ -2,11 +2,14 @@ package homework.education;
 
 public interface Commands {
 
+    //User Commands
+
+    String EXIT = "0";
     String LOGIN="1";
     String REGISTER="2";
    // String PRINT_USERS="3";
 
-     String EXIT = "0";
+     String LOGOUT = "0";
      String ADD_LESSON = "1";
      String ADD_STUDENT = "2";
      String PRINT_STUDENTS = "3";
@@ -17,15 +20,15 @@ public interface Commands {
 
 
 
-     static void printFirstCommandsForUser() {
+     static void printLoginRegisterCommandsForUser() {
          System.out.println("For logging in please input"+LOGIN);
          System.out.println("For registering please input"+REGISTER);
-         System.out.println("For exit pleas input"+EXIT);
+         System.out.println("For exit pleas input"+ EXIT);
 
     }
     static void printCommands() {
 
-        System.out.println("Please input " + EXIT + " for EXIT");
+        System.out.println("Please input " + LOGOUT + " for EXIT");
         System.out.println("Please input " + ADD_LESSON + " for ADD_LESSON");
         System.out.println("Please input " + ADD_STUDENT + " for ADD_STUDENT");
         System.out.println("Please input " + PRINT_STUDENTS + " for PRINT_STUDENTS");
@@ -37,7 +40,7 @@ public interface Commands {
 
     }
     static void printCommandsForuser() {
-    System.out.println("Please input " + EXIT + " for EXIT");
+    System.out.println("Please input " + LOGOUT + " for EXIT");
         System.out.println("Please input " + ADD_LESSON + " for ADD_LESSON");
         System.out.println("Please input " + ADD_STUDENT + " for ADD_STUDENT");
         System.out.println("Please input " + PRINT_STUDENTS + " for PRINT_STUDENTS");
@@ -48,5 +51,7 @@ public interface Commands {
 
 
 
-}}
+}
+
+}
 

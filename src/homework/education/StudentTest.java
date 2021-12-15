@@ -1,5 +1,6 @@
 package homework.education;
 
+import homework.education.Exceptions.UserNotFoundException;
 import homework.education.model.Lesson;
 import homework.education.model.Student;
 import homework.education.model.User;
@@ -7,6 +8,7 @@ import homework.education.storage.LessonStorage;
 import homework.education.storage.StudentStorage;
 import homework.education.storage.UserStorage;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class StudentTest implements Commands {
@@ -25,7 +27,7 @@ public class StudentTest implements Commands {
 
         boolean isRun = true;
         while (isRun) {
-            Commands.printFirstCommandsForUser();
+            Commands.printLoginRegisterCommandsForUser();
             String commandforUser = scanner.nextLine();
             switch (commandforUser) {
                 case LOGIN:
@@ -34,7 +36,7 @@ public class StudentTest implements Commands {
                 case REGISTER:
                     requireUserDatas();
                     break;
-                case EXIT:
+                case LOGOUT:
                     isRun = false;
                     break;
                 default:
@@ -48,25 +50,13 @@ public class StudentTest implements Commands {
 
     }
 
-    private static void requireUserDatas() {
-        System.out.println("Please input Users name");
-        String name = scanner.nextLine();
-        System.out.println("Please input Users surname");
-        String surname = scanner.nextLine();
-        System.out.println("Please input Users email");
-        String email = scanner.nextLine();
-        System.out.println("Please input Users password");
-        String password = scanner.nextLine();
-        System.out.println("Please input Users type");
-        String type = scanner.nextLine();
-        User user = new User(name, surname, email, password, type);
-        userStorage.add(user);
-        Commands.printCommandsForuser();
+
+    private static void userLogin() {
         boolean isRun2 = true;
         while (isRun2) {
             String command = scanner.nextLine();
             switch (command) {
-                case EXIT:
+                case LOGOUT:
                     isRun2 = false;
                     break;
                 case ADD_LESSON:
@@ -76,8 +66,8 @@ public class StudentTest implements Commands {
                     addStudent();
                     break;
                 case PRINT_STUDENTS:
-                  studentStorage.print();
-                   break;
+                    studentStorage.print();
+                    break;
                 case PRINT_STUDENTS_BY_LESSON:
                     printStudentsByLessons();
                     break;
@@ -90,164 +80,178 @@ public class StudentTest implements Commands {
             }
 
         }
+
+    }
+
+
+    private static void adminLogin() {
+        boolean isRun1 = true;
+        while (isRun1) {
+            Commands.printCommands();
+            String command = scanner.nextLine();
+            switch (command) {
+                case LOGOUT:
+                    isRun1 = false;
+                    break;
+                case ADD_LESSON:
+                    addLesson();
+                    break;
+                case ADD_STUDENT:
+                    addStudent();
+                    break;
+                case PRINT_STUDENTS:
+                    studentStorage.print();
+                    break;
+                case PRINT_STUDENTS_BY_LESSON:
+                    printStudentsByLessons();
+                    break;
+                case PRINT_LESSONS:
+                    lessonStorage.print();
+                    break;
+                case DELETE_LESSON_BY_NAME:
+                    deleteLessonByName();
+                    break;
+                case DELETE_STUDENT_BY_EMAIL:
+                    deleteStudentByEmail();
+                    break;
+                default:
+                    System.out.println("Invalid command!! ");
+                    break;
+            }
+
+        }
+    }
+
+
+    private static void requireUserDatas() {
+
+
+        System.out.println("Please input Users name");
+        String name = scanner.nextLine();
+        System.out.println("Please input Users surname");
+        String surname = scanner.nextLine();
+        System.out.println("Please input Users email");
+        String email = scanner.nextLine();
+        System.out.println("Please input Users password");
+        String password = scanner.nextLine();
+        System.out.println("Please input Users type");
+        String type = scanner.nextLine();
+        if (type.equalsIgnoreCase("admin")
+                || type.equalsIgnoreCase("user")) {
+        } else {
+            System.out.println("Invalid type");
+        }
+        User user = new User(name, surname, email, password, type.toUpperCase(Locale.ROOT));
+        try {
+            if (userStorage.checkUser(email, password) == null) {
+                userStorage.add(user);
+                Commands.printCommandsForuser();
+                userLogin();
+            } else {
+                System.out.println("User already exists");
+            }
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
     private static void requireEmailandPassword() {
-        System.out.println("Please input your email");
-        String email = scanner.nextLine();
-        System.out.println("Please input your password");
-        String password = scanner.nextLine();
-        User userinfo = userStorage.checkUser(email, password);
-        if (userinfo != null) {
-            System.out.println("please input user or admin ");
-            String type = scanner.nextLine();
-            //userinfo = userStorage.CheckUserbyType(type);
-            if (type.equals(userinfo.getType())) {
-                switch (type) {
-                    case "admin":
-                        boolean isRun1 = true;
-                        while (isRun1) {
-                            Commands.printCommands();
-                            String command = scanner.nextLine();
-                            switch (command) {
-                                case EXIT:
-                                    isRun1 = false;
-                                    break;
-                                case ADD_LESSON:
-                                    addLesson();
-                                    break;
-                                case ADD_STUDENT:
-                                    addStudent();
-                                    break;
-                                case PRINT_STUDENTS:
-                                    studentStorage.print();
-                                    break;
-                                case PRINT_STUDENTS_BY_LESSON:
-                                    printStudentsByLessons();
-                                    break;
-                                case PRINT_LESSONS:
-                                    lessonStorage.print();
-                                    break;
-                                case DELETE_LESSON_BY_NAME:
-                                    deleteLessonByName();
-                                    break;
-                                case DELETE_STUDENT_BY_EMAIL:
-                                    deleteStudentByEmail();
-                                    break;
-                                default:
-                                    System.out.println("Invalid command!! ");
-                                    break;
-                            }
-
-                        }
-
-                        break;
-                    case "user":
-                        //userStorage.checktype(type);
-                        Commands.printCommandsForuser();
-                        break;
-                }
-            }else {
-                System.out.println("your type is incorrect");
-                requireEmailandPassword();
+        boolean isRun = true;
+        while (isRun) {
+            System.out.println("Please input your email");
+            String email = scanner.nextLine();
+            System.out.println("Please input your password");
+            String password = scanner.nextLine();
+            User userinfo = null;
+            try {
+                userinfo = userStorage.checkUser(email, password);
+            } catch (UserNotFoundException e) {
+                e.printStackTrace();
             }
-        }else{
-            System.out.println("Your password and login is incorrect");
-            requireEmailandPassword();
+            if (userinfo != null) {
+                System.out.println("please input user or admin ");
+                String type = scanner.nextLine();
+
+                if (type.equals(userinfo.getType())) {
+                    switch (type) {
+                        case "admin":
+                            adminLogin();
+                            break;
+                        case "user":
+                            Commands.printCommandsForuser();
+                            break;
+                    }
+                } else {
+                    System.out.println("your type is incorrect");
+
+                }
+            } else {
+                System.out.println("Your password and login is incorrect");
+
+            }
+
+
         }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private static void deleteStudentByEmail() {
+        System.out.println("Please input student's email for deleting");
+        String email = scanner.nextLine();
+        Student student = studentStorage.deleteByEmail(email);
 
     }
 
-        private static void deleteStudentByEmail () {
-            System.out.println("Please input student's email for deleting");
-            String email = scanner.nextLine();
-            Student student = studentStorage.deleteByEmail(email);
+    private static void deleteLessonByName() {
+        System.out.println("Please input name of the lesson for deleting ");
+        String name = scanner.nextLine();
+        Lesson lesson = lessonStorage.deleteLessonByName(name);
 
-        }
-
-        private static void deleteLessonByName () {
-            System.out.println("Please input name of the lesson for deleting ");
-            String name = scanner.nextLine();
-            Lesson lesson = lessonStorage.deleteLessonByName(name);
-
-        }
-
-        private static void printStudentsByLessons () {
-            System.out.println("please input lesson name for printing Student");
-            String lessonname = scanner.nextLine();
-            studentStorage.printBylessonName(lessonname);
-
-        }
-
-        private static void addStudent () {
-            System.out.println("Please input lesson");
-            System.out.println("_______");
-            lessonStorage.print();
-            System.out.println("_______");
-            String lessonname = scanner.nextLine();
-            Lesson lesson = lessonStorage.getByLessonName(lessonname);
-            if (lesson != null)
-                lesson.setName(lessonname);
-            System.out.println("Please input Student's name");
-            String name = scanner.nextLine();
-            System.out.println("Please input Student's surname");
-            String surname = scanner.nextLine();
-            System.out.println("Please input Student's age");
-            int age = Integer.parseInt(scanner.nextLine());
-            System.out.println("Please input Student's email");
-            String email = scanner.nextLine();
-            System.out.println("Please input Student's phone");
-            String phone = scanner.nextLine();
-            Student studentInformation = new Student(name, surname, age, email, phone, lesson);
-            studentStorage.add(studentInformation);
-            System.out.println("Thank you student was added");
-        }
-
-        private static void addLesson () {
-            System.out.println("Please input the lesson");
-            String name = scanner.nextLine();
-            System.out.println("Please input  duration of the lesson");
-            String duration = scanner.nextLine();
-            System.out.println("Please input lecturar's name");
-            String lecturarName = scanner.nextLine();
-            System.out.println("Please input price of the lesson");
-            int price = Integer.parseInt(scanner.nextLine());
-            Lesson lessoninformation = new Lesson(name, duration, lecturarName, price);
-            lessonStorage.add(lessoninformation);
-            System.out.println("Thank you lesson was added");
-        }
     }
+
+    private static void printStudentsByLessons() {
+        System.out.println("please input lesson name for printing Student");
+        String lessonname = scanner.nextLine();
+        studentStorage.printBylessonName(lessonname);
+
+    }
+
+    private static void addStudent() {
+        System.out.println("Please input lesson");
+        System.out.println("_______");
+        lessonStorage.print();
+        System.out.println("_______");
+        String lessonname = scanner.nextLine();
+        Lesson lesson = lessonStorage.getByLessonName(lessonname);
+        if (lesson != null)
+            lesson.setName(lessonname);
+        System.out.println("Please input Student's name");
+        String name = scanner.nextLine();
+        System.out.println("Please input Student's surname");
+        String surname = scanner.nextLine();
+        System.out.println("Please input Student's age");
+        int age = Integer.parseInt(scanner.nextLine());
+        System.out.println("Please input Student's email");
+        String email = scanner.nextLine();
+        System.out.println("Please input Student's phone");
+        String phone = scanner.nextLine();
+        Student studentInformation = new Student(name, surname, age, email, phone, lesson);
+        studentStorage.add(studentInformation);
+        System.out.println("Thank you student was added");
+    }
+
+    private static void addLesson() {
+        System.out.println("Please input the lesson");
+        String name = scanner.nextLine();
+        System.out.println("Please input  duration of the lesson");
+        String duration = scanner.nextLine();
+        System.out.println("Please input lecturar's name");
+        String lecturarName = scanner.nextLine();
+        System.out.println("Please input price of the lesson");
+        int price = Integer.parseInt(scanner.nextLine());
+        Lesson lessoninformation = new Lesson(name, duration, lecturarName, price);
+        lessonStorage.add(lessoninformation);
+        System.out.println("Thank you lesson was added");
+    }
+}
