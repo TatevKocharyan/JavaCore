@@ -151,7 +151,7 @@ public class StudentTest implements Commands {
                 System.out.println("User already exists");
             }
         } catch (UserNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }
@@ -168,7 +168,7 @@ public class StudentTest implements Commands {
             try {
                 userinfo = userStorage.checkUser(email, password);
             } catch (UserNotFoundException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
             if (userinfo != null) {
                 System.out.println("please input user or admin ");
