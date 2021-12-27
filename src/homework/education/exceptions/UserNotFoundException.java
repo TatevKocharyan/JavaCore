@@ -1,4 +1,4 @@
-package homework.education.Exceptions;
+package homework.education.exceptions;
 
 public class UserNotFoundException extends Exception{
     public UserNotFoundException() {

@@ -1,8 +1,8 @@
 package homework.author.storage;
 
-import homework.author.util.ArrayUtil;
 import homework.author.model.Author;
 import homework.author.model.Book;
+import homework.author.util.ArrayUtil;
 
 public class BookStorage {
     Book[] books = new Book[10];
@@ -31,7 +31,7 @@ public class BookStorage {
         }
     }
 
-    public Book getBySerialId(String serialId) {
+    public Book getBySerialId(String serialId)  {
         for (int i = 0; i < size; i++) {
             if (books[i].getSerialId().equals(serialId)) {
                return books[i];

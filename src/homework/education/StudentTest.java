@@ -1,6 +1,6 @@
 package homework.education;
 
-import homework.education.Exceptions.UserNotFoundException;
+import homework.education.enums.UserType;
 import homework.education.model.Lesson;
 import homework.education.model.Student;
 import homework.education.model.User;
@@ -22,8 +22,8 @@ public class StudentTest implements Commands {
         lessonStorage.add(new Lesson("rus", "2 hours", "A.Sahakyan", 50));
         lessonStorage.add(new Lesson("eng", "2 hours", "A.Sahakyan", 50));
         studentStorage.add(new Student("poxos", "poxosyan", 19, "mail", "055555555", lessonStorage.getByLessonName("eng")));
-        userStorage.add(new User("Poxos", "Poxosyan", "poxos@gmail.com", "poxos555", "admin"));
-        //userStorage.add(new User("Poxos", "Poxosyan", "poxos@gmail.com", "poxos555", "user"));
+        userStorage.add(new User("Poxos", "Poxosyan", "poxos@gmail.com", "poxos555", UserType.ADMIN));
+        //userStorage.add(new User("Poxos", "Poxosyan", "poxos@gmail.com", "poxos555", UserType.USER));
 
         boolean isRun = true;
         while (isRun) {
@@ -136,21 +136,17 @@ public class StudentTest implements Commands {
         String password = scanner.nextLine();
         System.out.println("Please input Users type");
         String type = scanner.nextLine();
-        if (type.equalsIgnoreCase("admin")
-                || type.equalsIgnoreCase("user")) {
-        } else {
-            System.out.println("Invalid type");
-        }
-        User user = new User(name, surname, email, password, type.toUpperCase(Locale.ROOT));
         try {
-            if (userStorage.checkUser(email, password) == null) {
+            if (UserType.valueOf(type.toUpperCase()).equals(UserType.ADMIN)) {
+                System.out.println("you cannot register as an admin");
+            } else {
+                User user = new User(name, surname, email, password, UserType.valueOf(type.toUpperCase()));
+                userStorage.checkUser(email, password);
                 userStorage.add(user);
                 Commands.printCommandsForuser();
                 userLogin();
-            } else {
-                System.out.println("User already exists");
             }
-        } catch (UserNotFoundException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
@@ -158,43 +154,30 @@ public class StudentTest implements Commands {
 
 
     private static void requireEmailandPassword() {
-        boolean isRun = true;
-        while (isRun) {
-            System.out.println("Please input your email");
-            String email = scanner.nextLine();
-            System.out.println("Please input your password");
-            String password = scanner.nextLine();
-            User userinfo = null;
-            try {
-                userinfo = userStorage.checkUser(email, password);
-            } catch (UserNotFoundException e) {
-                System.out.println(e.getMessage());
+
+        System.out.println("Please input your email");
+        String email = scanner.nextLine();
+        System.out.println("Please input your password");
+        String password = scanner.nextLine();
+        User userinfo = null;
+        userinfo = userStorage.checkUser(email, password);
+        if (userinfo != null) {
+            System.out.println("please input user or admin ");
+            UserType.valueOf(scanner.nextLine());
+
+            if (UserType.ADMIN.equals(userinfo.getType())) {
+                adminLogin();
             }
-            if (userinfo != null) {
-                System.out.println("please input user or admin ");
-                String type = scanner.nextLine();
-
-                if (type.equals(userinfo.getType())) {
-                    switch (type) {
-                        case "admin":
-                            adminLogin();
-                            break;
-                        case "user":
-                            Commands.printCommandsForuser();
-                            break;
-                    }
-                } else {
-                    System.out.println("your type is incorrect");
-
-                }
-            } else {
-                System.out.println("Your password and login is incorrect");
-
+            if (UserType.USER.equals(userinfo.getType())) {
+                Commands.printCommandsForuser();
             }
-
-
+        } else {
+            System.out.println("Your password and login is incorrect");
         }
+
+
     }
+
 
     private static void deleteStudentByEmail() {
         System.out.println("Please input student's email for deleting");
