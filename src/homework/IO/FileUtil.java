@@ -22,9 +22,16 @@ public class FileUtil {
     }
 
     public void printSizeOfPackage(String path) {
-        int file = path.length();
-        System.out.println(file);
-    }
+        File file=new File(path);
+        File []files= file.listFiles();
+            int sum = 0;
+            for (int i = 0; i < files.length; i++) {
+                if (files[i].length() > sum) ;
+                sum += files[i].length();
+            }
+        System.out.println(sum);;
+
+        }
 
     public void createFileWithContent(String path1, String filename1, String content) {
         File file = new File(filename1);
