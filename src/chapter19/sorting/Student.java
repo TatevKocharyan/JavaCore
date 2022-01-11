@@ -1,26 +1,24 @@
-package homework.education.model;
+package chapter19.sorting;
 
 import homework.education.model.Lesson;
 
-import java.io.Serializable;
-
-public class Student implements Serializable {
+public class Student implements Comparable<Student> {
     private String name;
     private String surname;
     private int age;
     private String email;
     private String phone;
-    private Lesson lesson;
 
 
 
-    public Student(String name, String surname, int age, String email, String phone, Lesson lesson) {
+
+    public Student(String name, String surname, int age, String email, String phone) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.email = email;
         this.phone = phone;
-        this.lesson= lesson;
+
 
     }
 
@@ -67,13 +65,9 @@ public class Student implements Serializable {
         this.phone = phone;
     }
 
-    public Lesson getLesson() {
-        return lesson;
-    }
+  //
 
-    public void setLesson(Lesson lesson) {
-        this.lesson = lesson;
-    }
+
 
 
     @Override
@@ -84,8 +78,18 @@ public class Student implements Serializable {
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", \nlesson='" + lesson + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        //    if (age==o.getAge()){
+        //        return 0;
+        //    }else if(age>o.getAge()){
+        //        return 1;
+        //    }return -1;
+
+        return  name.compareToIgnoreCase(o.getName());
     }
 }
 

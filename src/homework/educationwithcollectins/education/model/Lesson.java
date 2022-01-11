@@ -1,9 +1,9 @@
-package homework.education.model;
+package homework.educationwithcollectins.education.model;
 
 
 import java.io.Serializable;
 
-public  class Lesson implements Serializable {
+public  class Lesson implements Serializable,Comparable {
         private String name;
         private String duration;
         private String lecturerName;
@@ -59,5 +59,10 @@ public  class Lesson implements Serializable {
                     ", price=" + price +
                     '}';
         }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
+}
 

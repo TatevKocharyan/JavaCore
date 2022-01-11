@@ -8,4 +8,11 @@ public class Area {
         a=pi*r*r;
         System.out.println("The area of circule is "+a);
     }
+
+
+
+
+
+
+
 }

@@ -1,16 +1,16 @@
-package homework.education.model;
+package homework.educationwithcollectins.education.model;
 
-import homework.education.enums.UserType;
+import homework.educationwithcollectins.education.enums.UserType;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class User implements Serializable {
+public class User implements Serializable, Comparable {
     private String name;
     private String surname;
     private String email;
     private String password;
-   UserType type;
+    UserType type;
 
     public User(String name, String surname, String email, String password, UserType type) {
         this.name = name;
@@ -19,7 +19,9 @@ public class User implements Serializable {
         this.password = password;
         this.type = type;
     }
-    public User(){}
+
+    public User() {
+    }
 
     public String getName() {
         return name;
@@ -80,5 +82,10 @@ public class User implements Serializable {
                 ", password='" + password + '\'' +
                 ", type='" + type + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

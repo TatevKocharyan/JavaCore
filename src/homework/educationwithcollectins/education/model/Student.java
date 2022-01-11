@@ -1,10 +1,8 @@
-package homework.education.model;
-
-import homework.education.model.Lesson;
+package homework.educationwithcollectins.education.model;
 
 import java.io.Serializable;
 
-public class Student implements Serializable {
+public class Student implements Serializable,Comparable {
     private String name;
     private String surname;
     private int age;
@@ -86,6 +84,11 @@ public class Student implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", \nlesson='" + lesson + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
 
